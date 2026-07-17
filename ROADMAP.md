@@ -26,13 +26,13 @@ Each checkbox links to the authoritative section plan. Detailed implementation n
 
 The first implementation slice is one statically composed workspace/session: a minimal PyQt window submits `CreateSession`, `SubmitPrompt`, `CancelRun`, and `Shutdown` through the Qt Runtime bridge; Runtime assembles application/agent instructions plus persisted history; one pinned Pydantic AI adapter uses one OpenAI-compatible Chat Completions endpoint; the agent may call only the native read-only `read_text` tool through the confined local execution backend; SQLite stores sessions, messages, runs, and committed normalized events; offline unit/contract/integration and offscreen GUI tests cover streaming, tool use, replay, failure, cancellation, timeout, and shutdown. Subprocesses, Policy approval UI, project selection, memory retrieval, skills, MCP, second backends, and dynamic plugins are outside this slice.
 
-- [ ] [Foundation](plans/foundation/plan.md#phase-1--functional-vertical-path)
-- [ ] [Runtime](plans/runtime/plan.md#phase-1--functional-vertical-path)
+- [x] [Foundation](plans/foundation/plan.md#phase-1--functional-vertical-path)
+- [x] [Runtime](plans/runtime/plan.md#phase-1--functional-vertical-path)
 - [ ] [Projects](plans/projects/plan.md#phase-1--functional-vertical-path)
 - [ ] [Persistence](plans/persistence/plan.md#phase-1--functional-vertical-path)
-- [ ] [Models](plans/models/plan.md#phase-1--functional-vertical-path)
-- [ ] [Agents](plans/agents/plan.md#phase-1--functional-vertical-path)
-- [ ] [Context](plans/context/plan.md#phase-1--functional-vertical-path)
+- [x] [Models](plans/models/plan.md#phase-1--functional-vertical-path)
+- [x] [Agents](plans/agents/plan.md#phase-1--functional-vertical-path)
+- [x] [Context](plans/context/plan.md#phase-1--functional-vertical-path)
 - [ ] [Memory](plans/memory/plan.md#phase-1--functional-vertical-path)
 - [ ] [Tools](plans/tools/plan.md#phase-1--functional-vertical-path)
 - [ ] [Skills](plans/skills/plan.md#phase-1--functional-vertical-path)

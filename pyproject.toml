@@ -9,7 +9,10 @@ description = "A modular desktop host for agentic systems and proven open-source
 readme = "README.md"
 requires-python = ">=3.12"
 authors = [{ name = "Daniel C." }]
-dependencies = []
+dependencies = [
+  "openai==2.46.0",
+  "pydantic-ai-slim[openai]==1.107.1",
+]
 
 [project.optional-dependencies]
 dev = [
@@ -25,9 +28,15 @@ gui = ["PyQt6>=6.8"]
 packages = ["src/agentle"]
 
 [tool.pytest.ini_options]
-addopts = "-ra --strict-markers --strict-config"
+addopts = "-ra --strict-markers --strict-config -m 'not live and not slow' --basetemp=.tmp-pytest"
 testpaths = ["tests"]
 asyncio_mode = "auto"
+markers = [
+  "gui: offscreen GUI behavior",
+  "integration: cross-section integration behavior",
+  "live: opt-in test requiring a configured network endpoint",
+  "slow: opt-in long-running behavior",
+]
 
 [tool.ruff]
 target-version = "py312"

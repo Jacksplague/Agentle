@@ -30,7 +30,7 @@ Phase 1 starts with a read-only `read_text` tool through the local backend. Subp
 
 ## Clean development setup
 
-Agentle requires Python 3.12 or newer. Runtime production dependencies have not yet been added; the commands below install only the scaffold and existing development tools.
+Agentle requires Python 3.12 or newer. The first vertical slice pins its agent/model dependencies; install the GUI extra to run the desktop application and its offscreen smoke test.
 
 PowerShell:
 
@@ -38,7 +38,7 @@ PowerShell:
 py -3.12 -m venv .venv
 .\.venv\Scripts\Activate.ps1
 python -m pip install --upgrade pip
-python -m pip install -e ".[dev]"
+python -m pip install -e ".[dev,gui]"
 ```
 
 POSIX shell:
@@ -47,14 +47,38 @@ POSIX shell:
 python3.12 -m venv .venv
 source .venv/bin/activate
 python -m pip install --upgrade pip
+python -m pip install -e '.[dev,gui]'
+```
+
+For headless contract work, omit the `gui` extra:
+
+```bash
 python -m pip install -e '.[dev]'
 ```
 
-Install the existing optional GUI dependency only when working on GUI code:
+## Configure and run
+
+Agentle reads configuration from the process environment; it does not implicitly load `.env`. The API key may be a local endpoint's placeholder value, but it must be present.
+
+PowerShell:
+
+```powershell
+$env:AGENTLE_MODEL_BASE_URL = "http://localhost:1234/v1"
+$env:AGENTLE_MODEL_NAME = "your-model-name"
+$env:AGENTLE_MODEL_API_KEY = "local"
+python -m agentle
+```
+
+POSIX shell:
 
 ```bash
-python -m pip install -e '.[dev,gui]'
+export AGENTLE_MODEL_BASE_URL='http://localhost:1234/v1'
+export AGENTLE_MODEL_NAME='your-model-name'
+export AGENTLE_MODEL_API_KEY='local'
+python -m agentle
 ```
+
+Optional `AGENTLE_WORKSPACE` selects the confined read workspace. `AGENTLE_DATA_DIR` selects the SQLite directory; otherwise Agentle uses `<workspace>/.agentle`.
 
 ## Validation
 
@@ -76,8 +100,14 @@ python -m mypy src
 python -m pytest
 ```
 
-The default suite must stay offline. Future live-provider smoke tests will be opt-in and excluded from these commands.
+The default suite stays offline. The live-provider smoke test is opt-in and excluded from these commands.
+
+Run the opt-in provider diagnostic only with an endpoint configured as above:
+
+```bash
+python -m pytest -m live tests/live/test_openai_compatible_endpoint.py
+```
 
 ## Current status
 
-Phase 0 planning is complete for Foundation, Runtime, Models, Agents, Context, Tools, Execution, Persistence, GUI, and Testing. Application runtime implementation has not started, and no Phase 1 item is complete.
+Phase 0 planning is complete for the initial ten sections. The first Phase 1 vertical slice is implemented: a PyQt command/event client, supervised single-agent runtime, pinned Pydantic AI/OpenAI-compatible adapter, confined `read_text`, and SQLite journal all run behind Agentle-owned contracts. Subprocess execution, Policy approval, memory retrieval, skills, MCP, multi-agent behavior, and dynamic plugins remain outside this slice.
