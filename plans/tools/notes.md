@@ -12,12 +12,10 @@
 
 ## Questions
 
-- Will Phase 1 argument validation use dataclass/manual validation or the validation dependency already introduced by Pydantic AI?
-- What default/max byte and line limits should `read_text` enforce?
-- Should `read_text` reject all symlinks or allow those whose canonical targets remain inside the workspace?
 - What fields of tool input/output may be persisted without leaking sensitive file content?
 
 ## Implementation Observations
 
 - `run_command` is blocked on a planned Policy authorization contract. It must not be smuggled in as a generic native tool during the first slice.
-
+- `read_text` performs strict manual validation, defaults to 200 lines, caps requests at 500 lines and 65,536 bytes, and allows symlinks only when the resolved target remains inside the workspace.
+- Runtime persists bounded lifecycle metadata and terminal output, not the full native tool result payload.

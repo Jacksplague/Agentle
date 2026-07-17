@@ -14,9 +14,10 @@
 
 - What bounded subscriber queue size provides enough burst tolerance for text deltas without hiding a slow GUI?
 - Should delta events be coalesced before persistence, and if so what maximum latency/size preserves useful streaming?
-- On startup recovery, should `runtime.interrupted` terminal events simply take the next session sequence, or carry explicit recovery metadata as well?
-- Is one active run globally simpler for the first slice than one active run per session, given the GUI exposes only one session?
+- Should `runtime.interrupted` later carry recovery-process metadata beyond its next committed session sequence and structured error?
 
 ## Implementation Observations
 
 - Persistence failure while recording a terminal event needs a last-resort diagnostic path, because the normal committed-event contract cannot be satisfied.
+- Runtime enforces one active run per session. The GUI exposes one session, but the contract does not create an unnecessary global run lock.
+- Sequence numbers advance in memory only after the matching persistence operation succeeds; a failed delta write can therefore be replaced by the next contiguous terminal event.

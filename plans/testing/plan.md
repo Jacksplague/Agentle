@@ -84,13 +84,13 @@ Testing does not add production contracts. It provides test support:
 
 ### Requirements
 
-- [ ] Add unit tests alongside each implemented section contract and state transition.
+- [x] Add unit tests alongside each implemented section contract and state transition.
 - [ ] Add reusable contract suites for runner, model adapter, tools, execution, and repositories.
-- [ ] Add an offline integration test: prompt to fake Pydantic-compatible transport, native `read_text`, SQLite journal, and normalized event replay.
-- [ ] Add cancellation tests during model streaming and tool execution plus timeout and persistence-failure cases.
-- [ ] Add graceful-shutdown tests for active and idle runtime states.
-- [ ] Add architecture import tests and an offscreen PyQt smoke test.
-- [ ] Keep a live endpoint smoke test under `@pytest.mark.live`, excluded by default.
+- [x] Add an offline integration test: prompt to fake Pydantic-compatible transport, native `read_text`, SQLite journal, and normalized event replay.
+- [x] Add cancellation tests during model streaming and tool execution plus timeout and persistence-failure cases.
+- [x] Add graceful-shutdown tests for active and idle runtime states.
+- [x] Add architecture import tests and an offscreen PyQt smoke test.
+- [x] Keep a live endpoint smoke test under `@pytest.mark.live`, excluded by default.
 
 ### Non-Goals
 
@@ -99,11 +99,11 @@ Testing does not add production contracts. It provides test support:
 
 ### Acceptance Criteria
 
-- [ ] `python -m ruff check .`, `python -m mypy src`, and default `python -m pytest` pass offline.
-- [ ] Tests fail if GUI imports a prohibited backend or if an adapter leaks its external types.
-- [ ] The integration test proves persist-before-publish ordering and exact terminal-event semantics.
-- [ ] Timeout/cancellation/shutdown tests assert no leaked tasks, threads, connections, or child processes.
-- [ ] The GUI smoke test works in an offscreen environment on the supported platforms.
+- [x] `python -m ruff check .`, `python -m mypy src`, and default `python -m pytest` pass offline.
+- [x] Tests fail if GUI imports a prohibited backend or if an adapter leaks its external types.
+- [x] The integration test proves persist-before-publish ordering and exact terminal-event semantics.
+- [x] Timeout/cancellation/shutdown tests assert no leaked tasks, threads, connections, or child processes.
+- [x] The GUI smoke test works in an offscreen environment on the supported platforms.
 
 ## Later Phases
 

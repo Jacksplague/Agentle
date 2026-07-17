@@ -12,11 +12,9 @@
 
 ## Questions
 
-- Which `SecretRef` schemes besides `env:` are required for Phase 1 development, if any?
-- Should public IDs be UUIDv7 when Python support is available, or is UUIDv4 sufficient until ordering is a measured need?
 - Which error `details` keys are safe enough to standardize, rather than leaving them section-owned?
 
 ## Implementation Observations
 
 - Redaction must be applied when an exception is converted, not left to each GUI/log consumer.
-
+- Phase 1 implements only explicit `env:` secret references and UUIDv4 opaque IDs. Additional schemes or time-ordered IDs require a concrete consumer.

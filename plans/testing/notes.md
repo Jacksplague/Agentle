@@ -13,12 +13,12 @@
 ## Questions
 
 - Which operating systems form the Phase 1 supported test matrix, especially for path and process-tree behavior?
-- Is QtTest sufficient for readable GUI tests, or does `pytest-qt` justify a new dev-only dependency?
 - What maximum wall-clock duration should the offline check suite target?
 - Which endpoint capability assumptions belong in the optional live smoke test?
-- Should architecture boundaries be checked with a small source/import test or a dedicated dependency rule tool after code exists?
+- When the package graph grows, should the current focused AST import guard be replaced by a dedicated dependency-rule tool?
 
 ## Implementation Observations
 
 - The first integration test should use a fake model transport but the real runner adapter if the framework permits it; otherwise contract-test the adapter separately and use a scripted runner for the full path.
-
+- Native QApplication event processing is sufficient for the first offscreen smoke test; `pytest-qt` was not added.
+- The implemented offline vertical integration uses a fake OpenAI SSE transport with the real Pydantic AI runner, `read_text`, local backend, SQLite journal, and Runtime replay.

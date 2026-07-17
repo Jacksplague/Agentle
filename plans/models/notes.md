@@ -17,12 +17,11 @@
 
 ## Questions
 
-- Which exact Pydantic AI version and OpenAI client combination passes the Phase 1 contract suite at implementation time?
-- Should capability support be configured explicitly only, or may the adapter perform a guarded endpoint probe?
-- Which optional generation fields are safe across the first target endpoint beyond temperature and maximum output tokens?
+- Should a later configuration surface add an explicit endpoint capability override, or a guarded probe, for servers that advertise incomplete OpenAI compatibility?
 - Which local/live OpenAI-compatible endpoint will be the documented development smoke-test target?
 
 ## Implementation Observations
 
 - The model binding and runner adapter are a paired infrastructure implementation; compatibility must fail during preflight rather than by downcast deep inside a run.
-
+- The passing Phase 1 pair is `pydantic-ai-slim[openai]==1.107.1` with `openai==2.46.0`; Pydantic AI 2.x requires a deliberate adapter upgrade.
+- Phase 1 sends only common timeout, temperature, maximum-token, and disabled-parallel-tool settings. It performs no network capability probe while opening a binding.

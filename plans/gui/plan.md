@@ -85,11 +85,11 @@ The Runtime worker owns an asyncio loop in a dedicated thread. Phase 1 does not 
 
 ### Requirements
 
-- [ ] Build one main window with transcript, multiline prompt, Send, Stop, status, and activity list.
-- [ ] Create or load one session at startup through `QtRuntimeClient`.
-- [ ] Disable Send while a session run is active; enable Stop until a terminal event arrives.
-- [ ] Render assistant deltas incrementally and reconcile to the completed persisted message.
-- [ ] Display tool/execution activity and safe structured failures without raw tracebacks or secrets.
+- [x] Build one main window with transcript, multiline prompt, Send, Stop, status, and activity list.
+- [x] Create or load one session at startup through `QtRuntimeClient`.
+- [x] Disable Send while a session run is active; enable Stop until a terminal event arrives.
+- [x] Render assistant deltas incrementally and reconcile to the completed persisted message.
+- [x] Display tool/execution activity and safe structured failures without raw tracebacks or secrets.
 - [ ] On close, request shutdown, wait asynchronously up to the GUI grace period, and only then destroy the runtime thread; present a force-close choice only after Runtime reports timeout.
 
 ### Non-Goals
@@ -99,11 +99,11 @@ The Runtime worker owns an asyncio loop in a dedicated thread. Phase 1 does not 
 
 ### Acceptance Criteria
 
-- [ ] A user can submit a prompt, see streaming text, observe a native tool, cancel, and see terminal state without the window becoming unresponsive.
-- [ ] Widget code has architecture tests forbidding imports of provider, runner-adapter, persistence-adapter, tool-implementation, execution-adapter, and subprocess modules.
-- [ ] Reducer tests cover live/replayed events, duplicate events, sequence gaps, failure, cancellation, and completion.
-- [ ] Closing during model or tool activity leaves no runtime thread/task active.
-- [ ] An offscreen GUI smoke test completes with fake RuntimeClient and no network/database.
+- [x] A user can submit a prompt, see streaming text, observe a native tool, cancel, and see terminal state without the window becoming unresponsive.
+- [x] Widget code has architecture tests forbidding imports of provider, runner-adapter, persistence-adapter, tool-implementation, execution-adapter, and subprocess modules.
+- [x] Reducer tests cover live/replayed events, duplicate events, sequence gaps, failure, cancellation, and completion.
+- [x] Closing during model or tool activity leaves no runtime thread/task active.
+- [x] An offscreen GUI smoke test completes with fake RuntimeClient and no network/database.
 
 ## Later Phases
 
@@ -113,4 +113,3 @@ Additional views follow completed application contracts. GUI expansion does not 
 
 - [ADR 0002](../../docs/decisions/0002-runtime-command-event-contract.md)
 - [ADR 0004](../../docs/decisions/0004-qt-runtime-thread-boundary.md)
-

@@ -82,12 +82,12 @@ Runner events contain Agentle tool calls and result values, not Pydantic AI node
 
 ### Requirements
 
-- [ ] Implement one Pydantic AI runner adapter for one statically selected `AgentDefinition`.
-- [ ] Translate `AssembledContext` and stored history into framework messages at the adapter edge.
-- [ ] Wrap Agentle `ToolInvoker` calls as framework function tools; the framework must never receive concrete execution backends.
-- [ ] Use the framework's all-event streaming API so tool turns finish before final output.
-- [ ] Propagate cancellation/deadline to the framework task and wait for its cleanup.
-- [ ] Map incomplete streams and framework exceptions to structured errors and close framework resources on shutdown.
+- [x] Implement one Pydantic AI runner adapter for one statically selected `AgentDefinition`.
+- [x] Translate `AssembledContext` and stored history into framework messages at the adapter edge.
+- [x] Wrap Agentle `ToolInvoker` calls as framework function tools; the framework must never receive concrete execution backends.
+- [x] Use the framework's all-event streaming API so tool turns finish before final output.
+- [x] Propagate cancellation/deadline to the framework task and wait for its cleanup.
+- [x] Map incomplete streams and framework exceptions to structured errors and close framework resources on shutdown.
 
 ### Non-Goals
 
@@ -96,11 +96,11 @@ Runner events contain Agentle tool calls and result values, not Pydantic AI node
 
 ### Acceptance Criteria
 
-- [ ] A fake model can produce text-only and one-tool-call runs through the adapter.
-- [ ] Tool allow-lists are enforced before registration with the framework.
-- [ ] Cancellation during a model stream and during a tool call terminates without a leaked task.
-- [ ] Runner events contain no framework object and end in exactly one final output or structured error.
-- [ ] The runner passes the common contract suite without a network connection.
+- [x] A fake model can produce text-only and one-tool-call runs through the adapter.
+- [x] Tool allow-lists are enforced before registration with the framework.
+- [x] Cancellation during a model stream and during a tool call terminates without a leaked task.
+- [x] Runner events contain no framework object and end in exactly one final output or structured error.
+- [x] The runner passes the common contract suite without a network connection.
 
 ## Later Phases
 

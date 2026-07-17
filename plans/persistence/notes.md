@@ -16,10 +16,10 @@
 - What batching/coalescing policy balances durable text deltas against SQLite write volume?
 - Should session titles remain null/manual in Phase 1 or derive deterministically from the first prompt?
 - What busy timeout and WAL fallback are appropriate for workspaces on network/removable filesystems?
-- Should interrupted-run recovery occur in repository startup or through an explicit Runtime recovery command?
 - Is `payload_json` canonicalization needed byte-for-byte, or is semantic JSON equivalence sufficient?
 
 ## Implementation Observations
 
 - Persist-before-publish makes SQLite availability part of run correctness; disk-full and locked-database tests are required.
-
+- Static composition calls `RuntimeService.recover_interrupted_runs()` before the GUI bridge becomes ready; recovery appends `runtime.interrupted` as the next committed per-session event.
+- SQLite uses a 5,000 ms busy timeout and attempts WAL with DELETE-journal fallback.

@@ -89,8 +89,8 @@ Execution must not import PyQt, Pydantic AI, provider SDKs, or persistence adapt
 
 ### Requirements
 
-- [ ] Implement workspace-canonicalized, symlink-safe, bounded UTF-8 `read_text` for the first slice.
-- [ ] Track active operations and make `close()` cancel/wait within a grace period.
+- [x] Implement workspace-canonicalized, symlink-safe, bounded UTF-8 `read_text` for the first slice.
+- [x] Track active operations and make `close()` cancel/wait within a grace period.
 - [ ] After Policy Phase 0, implement argv-only `asyncio` subprocess execution with separate stdout/stderr streaming, timeout, cancellation, output cap, exit metadata, and process-tree termination on Windows and POSIX.
 - [ ] Do not inherit the complete parent environment; pass only baseline variables and explicit allow-listed additions.
 - [ ] Convert platform exceptions to structured errors without including sensitive environment values.
@@ -102,7 +102,7 @@ Execution must not import PyQt, Pydantic AI, provider SDKs, or persistence adapt
 
 ### Acceptance Criteria
 
-- [ ] File contract tests cover traversal, absolute paths, symlink escape, missing files, UTF-8 errors, line/byte bounds, cancellation, and close.
+- [x] File contract tests cover traversal, absolute paths, symlink escape, missing files, UTF-8 errors, line/byte bounds, cancellation, and close.
 - [ ] Later process tests cover stdout/stderr ordering per stream, nonzero exit, spawn failure, timeout, cancellation, output overflow, and no surviving child process.
 - [ ] A fake backend passes the same tool-facing contract without platform access.
 - [ ] No process starts without a matching authorization value.
@@ -115,4 +115,3 @@ Phase 2 selects a second, proven isolated backend and uses the same contract sui
 
 - [ADR 0001](../../docs/decisions/0001-static-composition-and-owned-adapters.md)
 - [ADR 0005](../../docs/decisions/0005-phase-1-local-execution-boundary.md)
-

@@ -12,13 +12,12 @@
 
 ## Questions
 
-- Should the bridge use `QThread` ownership or a Python thread with queued Qt signals after a minimal shutdown/profiling spike?
-- What GUI shutdown grace period is understandable before presenting a force-close option?
-- Is native QtTest sufficient for Phase 1, or should `pytest-qt` be added to dev dependencies during implementation?
-- How should sequence gaps be presented while an automatic persisted-event replay is in progress?
-- Which Markdown subset, if any, is safe and necessary for the first transcript view?
+- Should a future session-reload command be automatic after a sequence gap, or require an explicit user retry?
+- Does a force-close choice need a new Runtime shutdown-timeout receipt, rather than being inferred from a GUI timer?
 
 ## Implementation Observations
 
 - Live and replayed events must share one reducer, or restart behavior will diverge from the running UI.
-
+- The implemented bridge owns an asyncio loop in one non-daemon Python thread and emits queued Qt signals; no additional event-loop package is needed.
+- The first window uses a five-second shutdown grace, native QApplication event processing for its smoke test, and plain text rendering rather than Markdown/WebEngine.
+- A sequence gap moves the reducer to a safe failed state and asks for reload; automatic replay remains unresolved.

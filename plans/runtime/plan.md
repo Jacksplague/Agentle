@@ -99,13 +99,13 @@ Runtime must not import PyQt, Pydantic AI, OpenAI SDK types, SQLite modules, or 
 
 ### Requirements
 
-- [ ] Construct one runtime service from explicit dependencies at the application composition root.
-- [ ] Create/load a session, persist a user message, and start one run per submitted prompt.
-- [ ] Assemble context, invoke one runner, normalize its output, and stream committed events to GUI.
-- [ ] Route tool calls through `ToolInvoker`; never let the runner call native implementations directly.
-- [ ] Enforce run and child-operation deadlines and cooperative cancellation.
-- [ ] Reject a duplicate active run for the same session with `runtime.session_busy`.
-- [ ] On shutdown, reject new work, cancel active work, flush terminal state, and close runner, model, persistence, and worker resources in deterministic order.
+- [x] Construct one runtime service from explicit dependencies at the application composition root.
+- [x] Create/load a session, persist a user message, and start one run per submitted prompt.
+- [x] Assemble context, invoke one runner, normalize its output, and stream committed events to GUI.
+- [x] Route tool calls through `ToolInvoker`; never let the runner call native implementations directly.
+- [x] Enforce run and child-operation deadlines and cooperative cancellation.
+- [x] Reject a duplicate active run for the same session with `runtime.session_busy`.
+- [x] On shutdown, reject new work, cancel active work, flush terminal state, and close runner, model, persistence, and worker resources in deterministic order.
 
 ### Non-Goals
 
@@ -114,11 +114,11 @@ Runtime must not import PyQt, Pydantic AI, OpenAI SDK types, SQLite modules, or 
 
 ### Acceptance Criteria
 
-- [ ] A fake-backed run emits strictly increasing sequences from `run.started` to one terminal event.
-- [ ] The GUI receives no event that failed to persist.
-- [ ] Cancellation and timeout each reach terminal state within a bounded test deadline and cancel any active tool/execution operation.
-- [ ] Provider, tool, persistence, and unexpected failures appear as structured `run.failed` events.
-- [ ] Shutdown leaves no runtime worker, model request, tool task, or local process running.
+- [x] A fake-backed run emits strictly increasing sequences from `run.started` to one terminal event.
+- [x] The GUI receives no event that failed to persist.
+- [x] Cancellation and timeout each reach terminal state within a bounded test deadline and cancel any active tool/execution operation.
+- [x] Provider, tool, persistence, and unexpected failures appear as structured `run.failed` events.
+- [x] Shutdown leaves no runtime worker, model request, tool task, or local process running.
 
 ## Later Phases
 

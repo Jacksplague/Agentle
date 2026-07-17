@@ -94,11 +94,11 @@ Foreign keys are enabled. IDs are application-generated text UUIDs. Payload JSON
 
 ### Requirements
 
-- [ ] Implement SQLite schema creation at version 1 with foreign keys, uniqueness constraints, WAL where available, and busy timeout.
-- [ ] Implement explicit repositories on one owned database worker so GUI/runtime loops never block on SQLite calls.
-- [ ] Implement start, append, complete/terminate, transcript load, replay, and incomplete-run recovery transactions.
-- [ ] Mark nonterminal runs found at startup as failed with `runtime.interrupted` and a new terminal event.
-- [ ] Flush and close the worker/connection during graceful shutdown.
+- [x] Implement SQLite schema creation at version 1 with foreign keys, uniqueness constraints, WAL where available, and busy timeout.
+- [x] Implement explicit repositories on one owned database worker so GUI/runtime loops never block on SQLite calls.
+- [x] Implement start, append, complete/terminate, transcript load, replay, and incomplete-run recovery transactions.
+- [x] Mark nonterminal runs found at startup as failed with `runtime.interrupted` and a new terminal event.
+- [x] Flush and close the worker/connection during graceful shutdown.
 
 ### Non-Goals
 
@@ -108,10 +108,10 @@ Foreign keys are enabled. IDs are application-generated text UUIDs. Payload JSON
 ### Acceptance Criteria
 
 - [ ] Repository contract tests run against temporary SQLite and fakes.
-- [ ] Duplicate/out-of-order sequences fail without a partial commit.
-- [ ] A completed run atomically contains its final assistant message, status, and terminal event.
-- [ ] Restart replay reconstructs the same transcript/runtime terminal state.
-- [ ] Shutdown releases the database so a new process can open it immediately.
+- [x] Duplicate/out-of-order sequences fail without a partial commit.
+- [x] A completed run atomically contains its final assistant message, status, and terminal event.
+- [x] Restart replay reconstructs the same transcript/runtime terminal state.
+- [x] Shutdown releases the database so a new process can open it immediately.
 
 ## Later Phases
 

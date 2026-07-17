@@ -16,12 +16,11 @@
 
 ## Questions
 
-- Which Pydantic AI all-event API is most stable in the pinned implementation version?
-- Does Phase 1 disable parallel tool calls for deterministic event ordering, or normalize concurrent calls with independent call IDs?
-- What usage fields can be normalized consistently without promising provider-specific accounting?
-- How should framework retries inside one run be surfaced without making a retry policy part of Runtime?
+- Should later adapters expose cached/reasoning token detail after a second provider proves a portable vocabulary?
+- If framework retries are enabled later, which normalized event indicates them without making Runtime own provider retry policy?
 
 ## Implementation Observations
 
 - The adapter must retain framework-native message history only at its edge; SQLite stores Agentle transcript/events rather than pickled or opaque framework objects.
-
+- Phase 1 uses `run_stream_events()`, disables parallel tool calls and framework retries, and normalizes only aggregate input/output token usage.
+- `Tool.from_schema` preserves Agentle's JSON Schema while callbacks receive only a run-scoped `ToolInvoker` and Agentle control values.

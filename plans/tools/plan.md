@@ -88,10 +88,10 @@ JSON Schema is the exchange representation at the runner edge, but Phase 1 nativ
 
 ### Requirements
 
-- [ ] Implement static catalog/invoker and strict argument validation.
-- [ ] Implement `read_text` through the local execution backend with workspace confinement, line limits, byte limits, cancellation, deadline, and structured failures.
-- [ ] Adapt catalog definitions/calls to Pydantic AI only inside the agent adapter.
-- [ ] Emit enough invocation metadata for Runtime to create requested/started/completed/failed events without persisting unbounded content.
+- [x] Implement static catalog/invoker and strict argument validation.
+- [x] Implement `read_text` through the local execution backend with workspace confinement, line limits, byte limits, cancellation, deadline, and structured failures.
+- [x] Adapt catalog definitions/calls to Pydantic AI only inside the agent adapter.
+- [x] Emit enough invocation metadata for Runtime to create requested/started/completed/failed events without persisting unbounded content.
 - [ ] After Policy Phase 0 is complete, add a separately reviewed `run_command(argv, cwd)` tool backed by Execution; it remains a Phase 1 item, not part of the first slice.
 
 ### Non-Goals
@@ -101,11 +101,11 @@ JSON Schema is the exchange representation at the runner edge, but Phase 1 nativ
 
 ### Acceptance Criteria
 
-- [ ] The fake runner can call `read_text` and receive a bounded result through `ToolInvoker`.
-- [ ] Absolute paths, traversal, symlink escape, invalid UTF-8, cancellation, timeout, and oversize output have contract tests.
-- [ ] Only allow-listed definitions are exposed to the runner.
-- [ ] A native tool can be replaced with a fake without changing Runtime or GUI.
-- [ ] `run_command` remains absent until its Policy gate and approval tests exist.
+- [x] The fake runner can call `read_text` and receive a bounded result through `ToolInvoker`.
+- [x] Absolute paths, traversal, symlink escape, invalid UTF-8, cancellation, timeout, and oversize output have contract tests.
+- [x] Only allow-listed definitions are exposed to the runner.
+- [x] A native tool can be replaced with a fake without changing Runtime or GUI.
+- [x] `run_command` remains absent until its Policy gate and approval tests exist.
 
 ## Later Phases
 

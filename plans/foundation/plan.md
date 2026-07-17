@@ -84,10 +84,10 @@ Foundation must not import PyQt, Pydantic AI, an OpenAI SDK, SQLite adapters, or
 
 ### Requirements
 
-- [ ] Implement and unit-test opaque ID factories and timezone validation.
-- [ ] Implement `Deadline`, a cooperative cancellation token, and a deterministic test clock.
-- [ ] Implement structured error conversion with explicit redaction tests.
-- [ ] Implement environment-backed `SecretResolver` without persisting resolved values.
+- [x] Implement and unit-test opaque ID factories and timezone validation.
+- [x] Implement `Deadline`, a cooperative cancellation token, and a deterministic test clock.
+- [x] Implement structured error conversion with explicit redaction tests.
+- [x] Implement environment-backed `SecretResolver` without persisting resolved values.
 
 ### Non-Goals
 
@@ -96,10 +96,10 @@ Foundation must not import PyQt, Pydantic AI, an OpenAI SDK, SQLite adapters, or
 
 ### Acceptance Criteria
 
-- [ ] Static typing rejects interchange of distinct ID kinds.
-- [ ] Cancellation and deadline tests are deterministic and do not sleep.
-- [ ] An unknown exception crosses the runtime boundary only as sanitized `ErrorInfo`.
-- [ ] Tests prove a resolved API key cannot appear in serialized errors or configuration snapshots.
+- [x] Static typing rejects interchange of distinct ID kinds.
+- [x] Cancellation and deadline tests are deterministic and do not sleep.
+- [x] An unknown exception crosses the runtime boundary only as sanitized `ErrorInfo`.
+- [x] Tests prove a resolved API key cannot appear in serialized errors or configuration snapshots.
 
 ## Later Phases
 

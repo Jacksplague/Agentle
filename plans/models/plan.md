@@ -85,11 +85,11 @@ All external model types stay inside `agentle.models.adapters.pydantic_ai_openai
 
 ### Requirements
 
-- [ ] Add the pinned, minimal Pydantic AI OpenAI optional dependency after a compatibility spike.
-- [ ] Implement one OpenAI-compatible adapter using the Chat Completions-compatible model path, custom base URL, model name, resolved API key, request timeout, and generation settings.
-- [ ] Validate streaming/tool capability before returning a binding.
-- [ ] Map provider exceptions and cancellation without leaking response bodies or secrets.
-- [ ] Close the underlying async client during runtime shutdown.
+- [x] Add the pinned, minimal Pydantic AI OpenAI optional dependency after a compatibility spike.
+- [x] Implement one OpenAI-compatible adapter using the Chat Completions-compatible model path, custom base URL, model name, resolved API key, request timeout, and generation settings.
+- [x] Validate streaming/tool capability before returning a binding.
+- [x] Map provider exceptions and cancellation without leaking response bodies or secrets.
+- [x] Close the underlying async client during runtime shutdown.
 
 ### Non-Goals
 
@@ -98,10 +98,10 @@ All external model types stay inside `agentle.models.adapters.pydantic_ai_openai
 
 ### Acceptance Criteria
 
-- [ ] Contract tests use a fake transport to verify configuration mapping, streaming, tool-call support, error mapping, cancellation, timeout, and close.
-- [ ] One opt-in live smoke test can target a configured compatible endpoint and is excluded from default checks.
-- [ ] Replacing the adapter requires no Runtime, GUI, Context, Tool, or Persistence contract change.
-- [ ] Tests prove API keys do not appear in descriptors, events, errors, or persisted payloads.
+- [x] Contract tests use a fake transport to verify configuration mapping, streaming, tool-call support, error mapping, cancellation, timeout, and close.
+- [x] One opt-in live smoke test can target a configured compatible endpoint and is excluded from default checks.
+- [x] Replacing the adapter requires no Runtime, GUI, Context, Tool, or Persistence contract change.
+- [x] Tests prove API keys do not appear in descriptors, events, errors, or persisted payloads.
 
 ## Later Phases
 
@@ -111,4 +111,3 @@ Phase 2 adds a second adapter to prove the seam. Routing, fallback, richer capab
 
 - [ADR 0001](../../docs/decisions/0001-static-composition-and-owned-adapters.md)
 - [ADR 0003](../../docs/decisions/0003-pydantic-ai-phase-1-adapter.md)
-

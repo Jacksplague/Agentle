@@ -84,10 +84,10 @@ Context must not import persistence adapters, memory libraries, skill loaders, p
 
 ### Requirements
 
-- [ ] Implement a deterministic assembler for application instructions, one agent definition, persisted session history, and the current user request.
-- [ ] Reject empty current requests, invalid history roles, and inputs above a configured character limit.
-- [ ] Preserve message IDs/timestamps as provenance while keeping provider formatting in the agent adapter.
-- [ ] Compute a stable fingerprint over normalized content and provenance IDs.
+- [x] Implement a deterministic assembler for application instructions, one agent definition, persisted session history, and the current user request.
+- [x] Reject empty current requests, invalid history roles, and inputs above a configured character limit.
+- [x] Preserve message IDs/timestamps as provenance while keeping provider formatting in the agent adapter.
+- [x] Compute a stable fingerprint over normalized content and provenance IDs.
 
 ### Non-Goals
 
@@ -96,10 +96,10 @@ Context must not import persistence adapters, memory libraries, skill loaders, p
 
 ### Acceptance Criteria
 
-- [ ] Unit tests cover ordering, role validation, provenance, repeatability, empty input, and overflow.
-- [ ] A multi-turn persisted transcript becomes the expected provider-neutral message order.
-- [ ] The assembler performs no I/O and has no hidden mutable state.
-- [ ] Memory retrieval can later produce contributions without changing assembly ownership.
+- [x] Unit tests cover ordering, role validation, provenance, repeatability, empty input, and overflow.
+- [x] A multi-turn persisted transcript becomes the expected provider-neutral message order.
+- [x] The assembler performs no I/O and has no hidden mutable state.
+- [x] Memory retrieval can later produce contributions without changing assembly ownership.
 
 ## Later Phases
 
@@ -108,4 +108,3 @@ Phase 2 may integrate an explicit memory retriever as a contribution producer. T
 ## Related Decisions
 
 - [ADR 0001](../../docs/decisions/0001-static-composition-and-owned-adapters.md)
-
